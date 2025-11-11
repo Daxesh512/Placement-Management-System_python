@@ -1,0 +1,47 @@
+{% extends 'home/base.html' %}
+
+{% block title %}PMS: Student Login{% endblock %}
+
+{% block actives %}active{% endblock %}
+{% block activec %}{% endblock %}
+
+{% block body %}
+
+<div id="backgroundImage">
+    <div class="container-fluid">
+        <div class="row modal-body">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h2 class="heading col-sm-offset-2"><strong>Student Login</strong></h2>
+                        <br>
+                        {% if form.errors %}
+                            <p class="error">Invalid username or password</p>
+                        {% endif %}
+
+                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form }}
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-5 col-sm-10">
+                                    <button type="submit" class="btn btn-success">Login</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="col-sm-offset-0">
+                            <a href="{% url 'student:student_register' %}">New Student Registration ...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <!-- Optional right-side content -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
